@@ -1,0 +1,36 @@
+es:
+  dialog:
+    new_title: 'Crear %{model}'
+    edit_title: 'Actualizar %{model}'
+    delete: 'Eliminar'
+  activerecord:
+    errors:
+        messages:
+          record_invalid: 'La validación falló: %{errors}'
+          restrict_dependent_destroy:
+            has_one: 'No se puede eliminar el registro porque existe un %{record} dependiente'
+            has_many: 'No se puede eliminar el registro porque existen %{record} dependientes'
+          blank: 'El campo %{attribute} es obligatorio'
+        models:
+          event:
+            attributes:
+              end:
+                after: 'El campo Fin debe ser posterior a Inicio'
+    models:
+      event:
+        one: 'Actividad'
+        other: 'Actividades'
+    attributes:
+      event:
+        title: 'Título'
+        description: 'Descripción'
+        start: 'Inicio'
+        end: 'Fin'
+        event_type: 'Tipo'
+  date:
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+  helpers:
+    submit:
+      create: 'Crear'
+      update: 'Actualizar'

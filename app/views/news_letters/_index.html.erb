@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div id="accordion">
+      <% year = -1 %>
+      <% news_letters.each_with_index do |news_letter, index| %>
+          <% if news_letter.year != year %>
+              <% year = news_letter.year %>
+              <div class="card">
+                <div class="card-header" id="heading<%= news_letter.year %>">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= news_letter.year %>" aria-expanded="true" aria-controls="collapse<%= news_letter.year %>">
+                      <%= news_letter.year %>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse<%= news_letter.year %>" class="collapse show" aria-labelledby="heading<%= news_letter.year %>" data-parent="#accordion">
+                  <div class="card-body">
+                    <ul>
+          <% end %>
+          <li><a href="<%= news_letter_articles_path news_letter %>"><%= I18n.t('date.month_names')[news_letter.month]%></a></li>
+          <% if index == news_letters.length - 1 || news_letters[index + 1].year != year%>
+              </ul>
+              </div>
+              </div>
+              </div>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to new_news_letter_path, class: 'btn btn-primary' do %>
+        <%= fa_icon 'plus' %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,33 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#featured-jumbotron {
+  padding: 0px;
+}
+
+#featured-text-column {
+  padding: 15px 15px 15px 40px;
+}
+
+#featured-content {
+  height: 250px;
+  max-height: 250px;
+}
+
+#featured-image {
+  width: 100%;
+}
+
+#article-row {
+  margin-bottom: 30px;
+}
+
+#article-card-body {
+  height: 250px;
+  max-height: 250px;
+}
+
+#article-actions {
+  padding: 20px;
+}
+

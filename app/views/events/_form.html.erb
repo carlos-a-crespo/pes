@@ -1,0 +1,21 @@
+<%= simple_form_for @event, remote: true do |f| %>
+    <div class='form-inputs'>
+      <%= f.input :title %>
+      <%= f.input :description, as: :text %>
+      <%= f.input :start, as: :fake, input_html: { id: 'fake_event_start', class: 'form-control input-sm date-range-picker' } %>
+      <%= f.input :end, as: :fake, input_html: { id: 'fake_event_end', class: 'form-control input-sm date-range-picker' } %>
+      <%= f.input_field :start, as: :hidden %>
+      <%= f.input_field :end, as: :hidden %>
+      <%= f.association :event_type, collection: EventType.all.order(:name), include_blank: false %>
+    </div>
+
+    <div class='form-actions'>
+      <%= f.button :submit, class: 'btn-primary' %>
+      <%= link_to t('dialog.delete'),
+                  event,
+                  method: :delete,
+                  class: 'btn btn-danger',
+                  data: { confirm: '¿Está seguro que desea eliminar el evento?' },
+                  remote: true unless @event.new_record? %>
+    </div>
+<% end %>

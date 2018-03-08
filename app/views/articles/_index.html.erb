@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= I18n.t('date.month_names')[news_letter.month] + ' ' + news_letter.year.to_s %></h1>
+  </div>
+  <div class="col-md-12">
+    <%= link_to edit_news_letter_path(news_letter), class: 'btn btn-primary' do %>
+        <%= fa_icon 'pencil' %>
+    <% end %>
+    <%= link_to news_letter_path(news_letter), method: :delete, class: 'btn btn-danger', data: { confirm: '¿Está seguro que desea eliminar el boletín?' } do %>
+        <%= fa_icon 'trash'%>
+    <% end %>
+  </div>
+</div>
+
+<% index = 0 %>
+<% articles.each do |article| %>
+    <% if article.featured == 1 %>
+        <div id="featured-jumbotron" class="jumbotron">
+          <div id="featured-row" class="row">
+            <div id="featured-text-column" class="col-md-6">
+              <h3 id="featuerd-header"><%= article.title %></h3>
+              <div id="featured-content" class="truncable">
+                <%= article.content.html_safe %>
+                <%= link_to 'Leer más »', news_letter_article_path(news_letter, article), class: 'read-more' %>
+              </div>
+              <div id="featured-actions">
+                <%= link_to edit_news_letter_article_path(news_letter, article), class: 'btn btn-primary' do %>
+                    <%= fa_icon "pencil"%>
+                <% end %>
+                <%= link_to news_letter_article_path(news_letter, article), method: :delete, class: 'btn btn-danger', data: { confirm: '¿Está seguro que desea eliminar el artículo?' } do %>
+                    <%= fa_icon 'trash'%>
+                <% end %>
+              </div>
+            </div>
+
+            <div id="featured-image-column" class="col-md-6">
+              <img id="featured-image" src="https://scontent-eze1-1.xx.fbcdn.net/v/t1.0-9/1377216_10151881744244321_1225602213_n.jpg?oh=cbc8770ba64bb958c33c4e2b524d4291&oe=5B49995F" />
+            </div>
+          </div>
+        </div>
+    <% else %>
+        <% if index.even? %>
+            <div id="article-row" class="row">
+        <% end %>
+
+        <div class="col-md-6">
+          <div id= "article-card" class="card">
+            <div id="article-card-body" class="card-body truncable">
+              <h5 id="article-header" class="card-title"><%= article.title %></h5>
+              <div id="article-content" class="card-text">
+                <%= article.content.html_safe %>
+                <%= link_to 'Leer más »', news_letter_article_path(news_letter, article), class: 'read-more' %>
+              </div>
+            </div>
+            <div id="article-actions">
+              <%= link_to edit_news_letter_article_path(news_letter, article), class: 'btn btn-primary' do %>
+                  <%= fa_icon "pencil"%>
+              <% end %>
+              <%= link_to news_letter_article_path(news_letter, article), method: :delete, class: 'btn btn-danger', data: { confirm: '¿Está seguro que desea eliminar el artículo?' } do %>
+                  <%= fa_icon 'trash'%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <% if index.odd? %>
+            </div>
+        <% end %>
+        <% index = index + 1 %>
+    <% end %>
+<% end %>
+

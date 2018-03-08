@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-2">
+    <%= render partial: 'index', locals: { news_letters: @news_letters }%>
+  </div>
+
+  <div class="col-md-10">
+    <%= render partial: 'articles/index', locals: {news_letter: @last_news_letter, articles: @articles} %>
+  </div>
+</div>

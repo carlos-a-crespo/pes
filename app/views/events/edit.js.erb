@@ -1,0 +1,24 @@
+$('#remote_container').html('<%= j render 'edit' %>');
+
+var form = $('#edit_event_<%= @event.id %>');
+form.bind("ajax:error", function(event, data, status, xhr) {
+  $('.is-invalid').removeClass('is-invalid');
+  $('.invalid-feedback').remove();
+
+
+  var errors = $.parseJSON(data.responseText);
+  $.each(errors, function(key, value) {
+    if(key == 'start' || key == 'end') {
+      $('#fake_event_' + key).addClass('is-invalid');
+    } else {
+      $('#event_' + key).addClass('is-invalid');
+    }
+
+    var feedbackDiv = $("<div class='invalid-feedback'>" + value + "</div>");
+    $('.event_' + key).append(feedbackDiv);
+
+    alert("Name: " + key + ", Value: " + value );
+  });
+});
+
+$('#edit_event').modal('show');

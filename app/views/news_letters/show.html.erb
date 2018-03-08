@@ -1,0 +1,9 @@
+<div class='row'>
+  <h1><%= I18n.t('date.month_names')[@news_letter.month] + ' ' + @news_letter.year.to_s %></h1>
+</div>
+
+<div class='row'>
+</div>
+
+
+<%= link_to 'Nuevo Artículo', new_news_letter_article_path(@news_letter) %>

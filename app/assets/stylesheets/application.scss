@@ -1,0 +1,16 @@
+@import 'articles';
+@import 'news_letters';
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'fullcalendar';
+@import 'daterangepicker';
+@import 'simplemde.min';
+
+#mainContainer {
+  margin-top: 25px;
+}
+
+.form-group.required .control-label:after {
+  content:" *";
+  color:red;
+}
